@@ -40,7 +40,7 @@ const displayAllData = (id)=>{
   closedCard.classList.add("hidden")
   const html = id.map(element => {
     // console.log(element);
-    return`<div id="open-cards" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
+    return`<div id="card-${element.id}" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
     <div class="card-body space-y-2.5 ">
     <div class="flex justify-between">
     <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
@@ -111,7 +111,7 @@ const renderOpenData =(id)=>{
   
   id.map(element =>{
    if(element.status === "open"){
-    const html = `<div id="open-cards" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
+    const html = `<div id="card-${element.id}" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
                 <div class="card-body space-y-2.5 ">
                     <div class="flex justify-between">
                         <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
