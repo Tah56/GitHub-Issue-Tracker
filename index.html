@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#F8FAFC]">
+    <section class=" bg-[#F8FAFC] min-h-screen max-w-md bg-base-200 mx-auto  flex flex-col justify-center items-center ">
+       
+        <fieldset  class="fieldset bg-white rounded-box mx-w-lg shadow-[0_5px_10px_rgba(0,0,0,0.08)] p-4 space-y-5">
+
+        <div class="space-y-4 text-center">
+            <div class="flex items-center justify-center">
+                <img src="./assets/github-logo.png" alt="">
+            </div>
+            <h2 class="font-semibold text-2xl">GitHub Issues Tracker</h2>
+            <p class="text-[#64748B]">Sign in to manage your issues</p>
+        </div>
+
+        <div class="space-y-1">
+            <label class="font-medium">Username</label>
+            <input autocomplete="off" id="email" type="email" class="input text-[#64748B] w-full" placeholder="Enter Username" />
+            <label for="" class="text-[#4A00FF]">Default: admin</label>
+
+        </div>
+
+        <div class="space-y-1">
+
+           <label class="font-medium">Password</label>
+            <input id="password" type="password" autocomplete="off" class="input text-[#64748B] w-full" placeholder="Enter Password" />
+            <label for="" class="text-[#4A00FF]">Default: admin123</label>
+        </div>
+
+        <button id="btn" class="btn btn-primary mb-5 ">Sign In</button>
+
+        <section class="relative mb-6">
+
+            <hr class="text-[#E4E4E7]">
+            <p class="bg-white absolute -top-2 left-[50%]">OR</p>
+        </section>
+        <section class="text-center ">
+            <p class="text-[#64748B]">Demo Credentials:</p>
+            <div class="bg-[#F8FAFC] rounded-2xl py-8">
+                <p>
+                   <span class="font-bold"> Username: </span>admin
+                </p>
+                <p>
+                    
+                    <span class="font-bold">Password: </span>admin123
+                </p>
+            </div>
+        </section>
+        </fieldset>
+    </section>
+
+    <script src="./script/index.js"></script>
+</body>
+</html>
