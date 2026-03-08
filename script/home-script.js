@@ -3,6 +3,15 @@ const cardData = document.getElementById("card-data")
 const openCard = document.getElementById("card-data-1");
 const closedCard = document.getElementById("card-data-2");
 
+const createBtn = (arr)=>{
+  const html = arr.map(element =>{
+    return `
+    <div class= flex gap-2 mb-2>
+      <button class="btn">${element}</button>
+    </div>`
+  }).join(" ");
+  return html
+}
 
 
 let open =[];
@@ -19,7 +28,7 @@ const loadinSCreen =(status)=>{
   document.getElementById("spinner").classList.add("hidden")
 }
 }
-loadinSCreen(true)
+
 const allData = async ()=>{
   loadinSCreen(true)
   const url =" https://phi-lab-server.vercel.app/api/v1/lab/issues"
@@ -40,7 +49,7 @@ const displayAllData = (id)=>{
   closedCard.classList.add("hidden")
   const html = id.map(element => {
     // console.log(element);
-    return`<div id="card-${element.id}" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
+    return`<div id="card-${element.id}" onclick="loadModal(${element.id})" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
     <div class="card-body space-y-2.5 ">
     <div class="flex justify-between">
     <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
@@ -51,9 +60,8 @@ const displayAllData = (id)=>{
     </div >
     <h2 class="font-semibold capitalize text-lg">${element.title}</h2>
     <p class="text-[#64748B] line-clamp-2">${element.description}</p>
-    <div class="">
-    <button class="btn ">BUG</button>
-    <button class="btn ">HELP WANTED</button>
+    <div class="flex flex-wrap gap-2">
+   ${createBtn(element.labels)}
     </div>
     </div>
     <hr class="text-[#E4E4E7]">
@@ -77,6 +85,7 @@ const displayAllData = (id)=>{
 
 
 const toggole =(id)=>{
+  const btn = document.getElementById(id);
   console.log(id);
 
   
@@ -84,6 +93,7 @@ const toggole =(id)=>{
     cardData.classList.remove("hidden")
     openCard.classList.add("hidden")
     closedCard.classList.add("hidden")
+
     // console.log( cardData.children.length);
     length.innerText = cardData.children.length;
     // loadinSCreen()
@@ -111,7 +121,7 @@ const renderOpenData =(id)=>{
   
   id.map(element =>{
    if(element.status === "open"){
-    const html = `<div id="card-${element.id}" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
+    const html = `<div id="card-${element.id}" onclick="loadModal(${element.id})" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
                 <div class="card-body space-y-2.5 ">
                     <div class="flex justify-between">
                         <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
@@ -122,9 +132,8 @@ const renderOpenData =(id)=>{
                     </div >
                     <h2 class="font-semibold capitalize text-lg">${element.title}</h2>
                     <p class="text-[#64748B] line-clamp-2">${element.description}</p>
-                    <div class="">
-                        <button class="btn ">BUG</button>
-                        <button class="btn ">HELP WANTED</button>
+                    <div class="flex flex-wrap gap-2">
+                       ${createBtn(element.labels)}
                     </div>
                 </div>
                 <hr class="text-[#E4E4E7]">
@@ -139,7 +148,7 @@ const renderOpenData =(id)=>{
             openCard.innerHTML +=html
             
    }else if(element.status === "closed"){
-    const html = `<div id="open-cards" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
+    const html = `<div id="closed-cards-${element.id}" onclick="loadModal(${element.id})" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
                 <div class="card-body space-y-2.5 ">
                     <div class="flex justify-between">
                         <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
@@ -150,9 +159,8 @@ const renderOpenData =(id)=>{
                     </div >
                     <h2 class="font-semibold capitalize text-lg">${element.title}</h2>
                     <p class="text-[#64748B] line-clamp-2">${element.description}</p>
-                    <div class="">
-                        <button class="btn ">BUG</button>
-                        <button class="btn ">HELP WANTED</button>
+                    <div class="flex flex-wrap gap-2">
+                       ${createBtn(element.labels)}
                     </div>
                 </div>
                 <hr class="text-[#E4E4E7]">
@@ -172,7 +180,35 @@ const renderOpenData =(id)=>{
 })
   
 }
+
+const loadModal = async (id)=>{
+  const url =`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data.data);
+  displayModalData(data.data)
+}
+
+const displayModalData = (data)=>{
+  const word = document.getElementById("word");
+  word.innerHTML =`<h3 class="text-lg font-bold">${data.title}</h3>
+    <p class="py-4 ">${data.status}</p>
+    
+    <div>
+    ${createBtn(data.labels)}
+    </div>
+    <div class="modal-action">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn">Close</button>
+      </form>
+    </div>`
+
+  document.getElementById("my_modal_5").showModal()
+}
+
 // all button section 
+
 
 const main= document.getElementById("main").addEventListener("click",(e)=>{
     const btns = e.target.closest("#all-btn");
