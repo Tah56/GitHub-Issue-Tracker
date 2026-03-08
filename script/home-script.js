@@ -46,7 +46,7 @@ const displayAllData = (id)=>{
     <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
     <div>
     
-    <p>${element.priority.toUpperCase()}</p>
+    <p class= "${element.priority === 'high' ? 'text-red-500' : element.priority === 'medium' ? 'text-yellow-500' : 'text-green-500'}">${element.priority.toUpperCase()}</p>
     </div>
     </div >
     <h2 class="font-semibold capitalize text-lg">${element.title}</h2>
@@ -117,7 +117,7 @@ const renderOpenData =(id)=>{
                         <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
                         <div>
 
-                            <p>${element.priority.toUpperCase()}</p>
+                            <p class= "${element.priority === 'high' ? 'text-red-500' : element.priority === 'medium' ? 'text-yellow-500' : 'text-green-500'}">${element.priority.toUpperCase()}</p>
                         </div>
                     </div >
                     <h2 class="font-semibold capitalize text-lg">${element.title}</h2>
@@ -145,7 +145,7 @@ const renderOpenData =(id)=>{
                         <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
                         <div>
 
-                            <p>${element.priority.toUpperCase()}</p>
+                            <p class= "${element.priority === 'high' ? 'text-red-500' : element.priority === 'medium' ? 'text-yellow-500' : 'text-green-500'}">${element.priority.toUpperCase()}</p>
                         </div>
                     </div >
                     <h2 class="font-semibold capitalize text-lg">${element.title}</h2>
