@@ -1,128 +1,27 @@
-# 🌟 Welcome To (সহজ সরল সিম্পল) Assignment - 5
+1 What is difference between var and let and constant?
 
-# **📅 Deadline For 60 marks:** 9th March, 2026 (11:59 pm ⏱️)  
-#  📅 No Deadline For 50 marks  
-# **📅 Deadline For 30 marks:** Any time after 9th March.
+Answer: var হলো অনেক পুরনো সিস্টেম Es6 এর আগে ব্যবহার করা হতো বা redeclear করা যায় এবং reassign করা যায় এবং এটি function scope 
 
----
+লেট ইয়েস সিক্স থেকে এসেছে এটি একবার ডিক্লেয়ার করলে দ্বিতীয়বার ডিক্লেয়ার করা যায় না কিন্তু মান পরিবর্তন করা যায় এবং এটি ব্লক স্কোপ
 
-# Assignment-05: GitHub Issues Tracker
+কনস্ট্যান্ট ইয়েস সিক্স থেকে এসেছে এটা একবার ডিক্লেয়ার করলে রি ডিক্লেয়ার করা যায়না এবং মান পরিবর্তন করা যায় না
 
 
-### **API Endpoints:**
-###  **All Issues:** 
-  - https://phi-lab-server.vercel.app/api/v1/lab/issues 
+2 what is spread operator?
+
+Answer: spread operator এমন একটা অপারেটর যা array  পরিবর্তন না করে নতুন array তৈরি করতে পারে
 
 
-###  **Single Issue:**
+3 what is the difference between map(), filters() and forEach()?
 
-   - Example: fffff
-
-
-###  **Search Issue:** https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q={searchText}
-
-   - Example:  https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications
+Answer: map(),filter(),forEach() তিনটাই array তে LOOP চালাই কিন্তু মাপ কাজ শেষে এ  নতুন এরে রিটার্ন করে 
+foreach কাজ শেষে এ কিছু রিটার্ন করে না 
+ফিল্টার শর্ত সাপেক্ষে নতুন এরে রিটার্ন করে 
 
 
----
+4 what is arrow function?
+Answer : অ্যারো ফাংশন (ES6) এ নতুন এসেছে। এর মাধ্যমে সংক্ষেপে ফাংশন ডিক্লেয়ার করা যায়। যদি ফাংশনটি এক লাইনের হয় তাহলে আলাদা করে return লিখতে হয় না।
 
-## 📝 Main Requirements
+5 what is tamplate literals ?
 
-## 🎨 Design Part
-
-## Login Page
-- Create a login page containing a logo, title, and sub-title
-- Below that, there will be 2 inputs, a sign-in button, and a demo credential to sign in. Follow the Figma for this page 
-- Styled as per Figma
-
-## Main Page: 
-
-### Navbar: 
-
-- Navbar with website logo/name on the left
-- Search input and button on the right
-
-### Tab Section like Figma: 
-
-- 3 tab ( All, Open, Closed) at the top of this section.(**All**, **Open**, **Closed**)
-
-- Below the tab, there will be an icon, the issue count, some text on the left, and an open and closed marker on the right
-
-- Responsiveness: The website should be responsive for mobile devices. It is totally up to you. 
-
-
---- 
-
-
-## ⚙️ Functionalities
-- In login page, there will be default admin credentials (username, password). You need to sign in using these credentials.
-
-- Load all issues and display as per Figma
-
-- On clicking on an open or closed tab, it will load the issues data of the related tab and show it in a display-like card in a 4-column layout like Figma. By default, it will show all data 
-
-- Each card shows:
-  - Title
-  - Description
-  - Status
-  - Category
-  - Author
-  - Priority
-  - Label
-  - CreatedAt
-- Clicking on a tree name in a card will open a modal and show all the information about that Issue. 
-
-### 🚀 Challenges
-
-
-- Show the card Top border based on their category(open, closed), open card will have Green Boder, closed card will have a purple border on top. 
-
-- Loading spinner on data load
-
-- Show active button on changing category names
-
-- Implement Search Functionality and 8 meaningful github commit.  
-
-- Create a readme file and answer this question on your own. Don’t copy-paste from Google or any AI chatbot. 
-    - 1️⃣ What is the difference between var, let, and const?
-    - 2️⃣ What is the spread operator (...)?
-    - 3️⃣ What is the difference between map(), filter(), and forEach()?
-    - 4️⃣ What is an arrow function?
-    - 5️⃣ What are template literals?
-
-
----
-
-## 🛠️ Technology Stack
-
-- **HTML**
-- **CSS** (Vanilla/Tailwind/DaisyUI)
-- **JavaScript** (Vanilla)
-
----
-
-## 🔑 Demo Credentials
-
-```text
-Username: admin
-Password: admin123
-```
-
-
----
-
-### Optional: 
- - No need to show status: Open, Closed styles On modals. 
- - No Need to show icon on labels 
- - No need to apply styles on Priority 
---- 
-
-
-## 📤 What to submit
-
-- **GitHub Repository Link:**
-- **Live Site Link:**
-
----
-
-
+Answer :টেমপ্লেট লিটারাল হলো JavaScript এর একটি ফিচার, যার মাধ্যমে  সহজভাবে string লেখা যায়  এতে ${} ব্যবহার করে string এর মধ্যে variable  যুক্ত করা যায়।
