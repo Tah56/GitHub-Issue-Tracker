@@ -2,16 +2,24 @@ let length = document.getElementById("issue-length");
 const cardData = document.getElementById("card-data")
 const openCard = document.getElementById("card-data-1");
 const closedCard = document.getElementById("card-data-2");
+const btnAll = document.getElementById("all-btn");
 
 const createBtn = (arr)=>{
   const html = arr.map(element =>{
+    
+    
     return `
-    <div class= flex gap-2 mb-2>
-      <button class="btn">${element}</button>
+    <div>
+        <button class="btn rounded-2xl text-[12px] font-medium text-[#9CA3AF] ${element === 'bug' ? 'text-[#EF4444] bg-[#FECACA]  ' : element === 'help wanted'? 'text-[#D97706] bg-[#FFF8DB]':element === "enhancement"? 'bg-[#BBF7D0] text-green-400 ':''} ">${element.toUpperCase()}</button>
     </div>`
-  }).join(" ");
+  }).join("");
+  // console.log(arr);
+  
   return html
+  
 }
+
+;
 
 
 let open =[];
@@ -49,8 +57,8 @@ const displayAllData = (id)=>{
   closedCard.classList.add("hidden")
   const html = id.map(element => {
     // console.log(element);
-    return`<div id="card-${element.id}" onclick="loadModal(${element.id})" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
-    <div class="card-body space-y-2.5 ">
+    return`<div id="card-${element.id}" onclick="loadModal(${element.id})" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)]  space-y-2.5 max-w-96 h-96">
+    <div class="card-body lg:space-y-2.5 ">
     <div class="flex justify-between">
     <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
     <div>
@@ -58,14 +66,14 @@ const displayAllData = (id)=>{
     <p class= "${element.priority === 'high' ? 'text-red-500' : element.priority === 'medium' ? 'text-yellow-500' : 'text-green-500'}">${element.priority.toUpperCase()}</p>
     </div>
     </div >
-    <h2 class="font-semibold capitalize text-lg">${element.title}</h2>
+    <h2 class="font-semibold capitalize lg:text-lg">${element.title}</h2>
     <p class="text-[#64748B] line-clamp-2">${element.description}</p>
-    <div class="flex flex-wrap gap-2">
+    <div class="flex flex-wrap text-[12px] gap-1">
    ${createBtn(element.labels)}
     </div>
     </div>
     <hr class="text-[#E4E4E7]">
-    <div class="p-5 space-y-2.5 text-[#64748B]">
+    <div class="mx-auto space-y-2.5 text-[#64748B]">
     <p>
     ${element.author}
     </p>
@@ -86,13 +94,28 @@ const displayAllData = (id)=>{
 
 const toggole =(id)=>{
   const btn = document.getElementById(id);
-  console.log(id);
-
+  console.log(btn);
   
+  console.log(typeof id);
+
+  for (const element of btnAll.children) {
+    
+   
+    element.classList.remove("btn-primary")
+    element.classList.add("remove")  
+    console.log(element);
+  }     
+  btn.classList.add("btn-primary")
+  btn.classList.remove("remove")
+ 
+     
   if (id === "btn-all") {
     cardData.classList.remove("hidden")
     openCard.classList.add("hidden")
     closedCard.classList.add("hidden")
+     
+    
+     
 
     // console.log( cardData.children.length);
     length.innerText = cardData.children.length;
@@ -105,7 +128,8 @@ const toggole =(id)=>{
     openCard.classList.remove("hidden")
     closedCard.classList.add("hidden")
     length.innerText = openCard.children.length;
-    // console.log( openCard.children.length);
+     
+     
   }else if(id === "btn-closed"){
     // console.log("closed button clicked");
     cardData.classList.add("hidden")
@@ -119,59 +143,59 @@ const toggole =(id)=>{
 const renderOpenData =(id)=>{
 
   
-  id.map(element =>{
+  id.forEach(element =>{
    if(element.status === "open"){
-    const html = `<div id="card-${element.id}" onclick="loadModal(${element.id})" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
-                <div class="card-body space-y-2.5 ">
-                    <div class="flex justify-between">
-                        <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
-                        <div>
-
-                            <p class= "${element.priority === 'high' ? 'text-red-500' : element.priority === 'medium' ? 'text-yellow-500' : 'text-green-500'}">${element.priority.toUpperCase()}</p>
-                        </div>
-                    </div >
-                    <h2 class="font-semibold capitalize text-lg">${element.title}</h2>
-                    <p class="text-[#64748B] line-clamp-2">${element.description}</p>
-                    <div class="flex flex-wrap gap-2">
-                       ${createBtn(element.labels)}
-                    </div>
-                </div>
-                <hr class="text-[#E4E4E7]">
-                <div class="p-5 space-y-2.5 text-[#64748B]">
-                    <p>
-                   ${element.author}
-                    </p>
-                <p>${element.createdAt}</p>
-                </div>
-               
-            </div>`
+    const html = `<div id="card-${element.id}" onclick="loadModal(${element.id})" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)]  space-y-2.5 max-w-96 h-96">
+    <div class="card-body lg:space-y-2.5 ">
+    <div class="flex justify-between">
+    <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
+    <div>
+    
+    <p class= "${element.priority === 'high' ? 'text-red-500' : element.priority === 'medium' ? 'text-yellow-500' : 'text-green-500'}">${element.priority.toUpperCase()}</p>
+    </div>
+    </div >
+    <h2 class="font-semibold capitalize lg:text-lg">${element.title}</h2>
+    <p class="text-[#64748B] line-clamp-2">${element.description}</p>
+    <div class="flex flex-wrap text-[12px] gap-1">
+   ${createBtn(element.labels)}
+    </div>
+    </div>
+    <hr class="text-[#E4E4E7]">
+    <div class="mx-auto space-y-2.5 text-[#64748B]">
+    <p>
+    ${element.author}
+    </p>
+    <p>${element.createdAt}</p>
+    </div>
+    
+    </div>`
             openCard.innerHTML +=html
             
    }else if(element.status === "closed"){
-    const html = `<div id="closed-cards-${element.id}" onclick="loadModal(${element.id})" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)] space-y-2.5 h-96">
-                <div class="card-body space-y-2.5 ">
-                    <div class="flex justify-between">
-                        <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
-                        <div>
-
-                            <p class= "${element.priority === 'high' ? 'text-red-500' : element.priority === 'medium' ? 'text-yellow-500' : 'text-green-500'}">${element.priority.toUpperCase()}</p>
-                        </div>
-                    </div >
-                    <h2 class="font-semibold capitalize text-lg">${element.title}</h2>
-                    <p class="text-[#64748B] line-clamp-2">${element.description}</p>
-                    <div class="flex flex-wrap gap-2">
-                       ${createBtn(element.labels)}
-                    </div>
-                </div>
-                <hr class="text-[#E4E4E7]">
-                <div class="p-5 space-y-2.5 text-[#64748B]">
-                    <p>
-                   ${element.author}
-                    </p>
-                <p>${element.createdAt}</p>
-                </div>
-               
-            </div>`
+    const html = `<div id="card-${element.id}" onclick="loadModal(${element.id})" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)]  space-y-2.5 max-w-96 h-96">
+    <div class="card-body lg:space-y-2.5 ">
+    <div class="flex justify-between">
+    <img ${element.status ==="open"?'src="./assets/Open-Status.png" alt=""':'src="./assets/Closed- Status .png" alt=""'} >
+    <div>
+    
+    <p class= "${element.priority === 'high' ? 'text-red-500' : element.priority === 'medium' ? 'text-yellow-500' : 'text-green-500'}">${element.priority.toUpperCase()}</p>
+    </div>
+    </div >
+    <h2 class="font-semibold capitalize lg:text-lg">${element.title}</h2>
+    <p class="text-[#64748B] line-clamp-2">${element.description}</p>
+    <div class="flex flex-wrap text-[12px] gap-1">
+   ${createBtn(element.labels)}
+    </div>
+    </div>
+    <hr class="text-[#E4E4E7]">
+    <div class="mx-auto space-y-2.5 text-[#64748B]">
+    <p>
+    ${element.author}
+    </p>
+    <p>${element.createdAt}</p>
+    </div>
+    
+    </div>`
 
             closedCard.innerHTML +=html
 
@@ -206,27 +230,5 @@ const displayModalData = (data)=>{
 
   document.getElementById("my_modal_5").showModal()
 }
-
-// all button section 
-
-
-const main= document.getElementById("main").addEventListener("click",(e)=>{
-    const btns = e.target.closest("#all-btn");
-    const isBtn =e.target.closest("button");
-
-    if (!isBtn) {
-      return
-    }
-
-    for (const btn of btns.children) {
-     
-      btn.classList.remove("activ")
-      btn.classList.remove("btn-primary")
-      btn.classList.add("remove")
-    }
-    isBtn.classList.add("activ")
-     
-    
-})
 
 allData()
