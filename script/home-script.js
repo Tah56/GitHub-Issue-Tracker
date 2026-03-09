@@ -270,5 +270,15 @@ const search = async()=>{
   const response = await fetch(url)
   const data = await response.json();
   console.log(data.data);
-  
+  let filteredData = data.data;
+   if(currentFilter === "open"){
+     filteredData = data.data.filter(element => element.status === "open")
+  } else if(currentFilter === "closed"){
+    filteredData = data.data.filter(element => element.status === "closed" )
+  }
+  if (searchValue === "") {
+    return
+  }
+  displayAllData(filteredData)
+  renderOpenData(filteredData)
 }
