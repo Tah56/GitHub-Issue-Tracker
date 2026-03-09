@@ -260,3 +260,15 @@ const displayModalData = (data)=>{
 
   document.getElementById("my_modal_5").showModal()
 }
+
+allData()
+
+const search = async()=>{
+  const searchValue = searchBox.value.trim().toLowerCase();
+  console.log(searchValue);
+  const url =`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`
+  const response = await fetch(url)
+  const data = await response.json();
+  console.log(data.data);
+  
+}
