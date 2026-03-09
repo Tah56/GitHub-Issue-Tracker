@@ -3,6 +3,8 @@ const cardData = document.getElementById("card-data")
 const openCard = document.getElementById("card-data-1");
 const closedCard = document.getElementById("card-data-2");
 const btnAll = document.getElementById("all-btn");
+const searchBox = document.getElementById("search-box");
+const searchBtn = document.getElementById("search-btn");
 
 const createBtn = (arr)=>{
   const html = arr.map(element =>{
@@ -22,7 +24,7 @@ const createBtn = (arr)=>{
 ;
 
 
-let open =[];
+let issue =[];
 
 const loadinSCreen =(status)=>{
   if (status === true) {
@@ -43,10 +45,10 @@ const allData = async ()=>{
   const respons = await fetch(url);
   const data = await respons.json();
  
-  open =data.data;
+  issue =data.data;
     
   displayAllData(data.data) 
-  renderOpenData(open)
+  renderOpenData(issue)
   
 
 }
@@ -92,6 +94,7 @@ const displayAllData = (id)=>{
 
 
 
+let currentFilter = "all";
 const toggole =(id)=>{
   const btn = document.getElementById(id);
   console.log(btn);
@@ -113,8 +116,8 @@ const toggole =(id)=>{
     cardData.classList.remove("hidden")
     openCard.classList.add("hidden")
     closedCard.classList.add("hidden")
-     
-    
+      currentFilter = "all";
+     console.log(currentFilter);    
      
 
     // console.log( cardData.children.length);
@@ -128,6 +131,8 @@ const toggole =(id)=>{
     openCard.classList.remove("hidden")
     closedCard.classList.add("hidden")
     length.innerText = openCard.children.length;
+     currentFilter = "open"; ;
+
      
      
   }else if(id === "btn-closed"){
@@ -136,15 +141,18 @@ const toggole =(id)=>{
     openCard.classList.add("hidden")
     closedCard.classList.remove("hidden")
     length.innerText = closedCard.children.length;
+      currentFilter = "closed";
+
   }
 
 }
 
 const renderOpenData =(id)=>{
 
-  
+  closedCard.innerHTML ="";
+  openCard.innerHTML ="";
   id.forEach(element =>{
-   if(element.status === "open"){
+    if(element.status === "open"){
     const html = `<div id="card-${element.id}" onclick="loadModal(${element.id})" class=" card bg-base-100 border-t-4  ${element.status ==="open"? "border-[green]": "border-[#A855F7]" }  shadow-[0_5px_10px_rgba(0,0,0,0.2)]  space-y-2.5 max-w-96 h-96">
     <div class="card-body lg:space-y-2.5 ">
     <div class="flex justify-between">
@@ -252,5 +260,3 @@ const displayModalData = (data)=>{
 
   document.getElementById("my_modal_5").showModal()
 }
-
-allData()
