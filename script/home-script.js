@@ -9,9 +9,9 @@ const createBtn = (arr)=>{
     
     
     return `
-    <div>
+    
         <button class="btn rounded-2xl text-[12px] font-medium text-[#9CA3AF] ${element === 'bug' ? 'text-[#EF4444] bg-[#FECACA]  ' : element === 'help wanted'? 'text-[#D97706] bg-[#FFF8DB]':element === "enhancement"? 'bg-[#BBF7D0] text-green-400 ':''} ">${element.toUpperCase()}</button>
-    </div>`
+`
   }).join("");
   // console.log(arr);
   
@@ -215,16 +215,38 @@ const loadModal = async (id)=>{
 
 const displayModalData = (data)=>{
   const word = document.getElementById("word");
+  console.log(data);
+  
   word.innerHTML =`<h3 class="text-lg font-bold">${data.title}</h3>
-    <p class="py-4 ">${data.status}</p>
-    
+  
+  
+    <div class="flex text-[14px]  text-[#64748B]">
+ 
+     <p><span class="font-extrabold m-2 ${data.status === 'open' ? 'text-green-500' : 'text-red-500'}">${data.status}</span>•Created by ${data.author} at ${data.createdAt}</p>
+    </div>
     <div>
+    
     ${createBtn(data.labels)}
     </div>
+    <div class="py-4">
+    <p class="text-[14px] text-[#64748B]">${data.description}</p>
+    </div>
+
+    <div class="flex justify-between bg-[#64748B10] p-4 rounded-2xl">
+      <div>
+      <h3 class="font-semibold text-[16px] text-[#64748B]">Assignee:</h3>
+      <p class="text-[14px] text-black font-bold">${data.assignee ? data.assignee.toUpperCase() : 'Tanzim Ahmed'}</p>
+      </div>
+      <div>
+      <h3 class="font-semibold text-[16px] text-[#64748B]">Priority:</h3>
+      <p class="text-[14px] text-black font-bold ${data.priority === 'high' ? 'text-red-500' : data.priority === 'medium' ? 'text-yellow-500' : 'text-green-500'}">${data.priority.toUpperCase()}</p>
+      </div>
+    </div>
+
     <div class="modal-action">
       <form method="dialog">
         <!-- if there is a button in form, it will close the modal -->
-        <button class="btn">Close</button>
+        <button class="btn btn-primary">Close</button>
       </form>
     </div>`
 
