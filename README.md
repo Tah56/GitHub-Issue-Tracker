@@ -21,9 +21,8 @@ This project helped me practice:
 
 ## 🚀 Live Demo
 
-🔗 **Live Link:** [Add your live project link here](https://your-live-link.com)
+🔗 **Live Link:(https://tah56.github.io/GitHub-Issue-Tracker/)
 
-> Example: If you host with Vercel / Netlify, replace the link above with your actual deployed URL.
 
 ---
 
