@@ -1,27 +1,83 @@
-1 What is difference between var and let and constant?
+# 🐞 GitHub Issue Tracker
 
-Answer: var হলো অনেক পুরনো সিস্টেম Es6 এর আগে ব্যবহার করা হতো বা redeclear করা যায় এবং reassign করা যায় এবং এটি function scope 
+A simple and efficient **GitHub Issue Tracker** built to help users manage, organize, and monitor project issues in a clean and user-friendly interface.  
+This project focuses on improving issue visibility, tracking progress, and practicing real-world frontend development concepts.
 
-লেট ইয়েস সিক্স থেকে এসেছে এটি একবার ডিক্লেয়ার করলে দ্বিতীয়বার ডিক্লেয়ার করা যায় না কিন্তু মান পরিবর্তন করা যায় এবং এটি ব্লক স্কোপ
+---
 
-কনস্ট্যান্ট ইয়েস সিক্স থেকে এসেছে এটা একবার ডিক্লেয়ার করলে রি ডিক্লেয়ার করা যায়না এবং মান পরিবর্তন করা যায় না
+## 📌 Overview
 
+The **GitHub Issue Tracker** allows users to view and manage issue-related information in an organized way.  
+It is designed as a practical project to simulate how issue management systems work in real development workflows.
 
-2 what is spread operator?
+This project helped me practice:
+- DOM manipulation
+- Data rendering
+- Filtering and searching
+- Local state handling
+- Clean UI structuring
 
-Answer: spread operator এমন একটা অপারেটর যা array  পরিবর্তন না করে নতুন array তৈরি করতে পারে
+---
 
+## 🚀 Live Demo
 
-3 what is the difference between map(), filters() and forEach()?
+🔗 **Live Link:** [Add your live project link here](https://your-live-link.com)
 
-Answer: map(),filter(),forEach() তিনটাই array তে LOOP চালাই কিন্তু মাপ কাজ শেষে এ  নতুন এরে রিটার্ন করে 
-foreach কাজ শেষে এ কিছু রিটার্ন করে না 
-ফিল্টার শর্ত সাপেক্ষে নতুন এরে রিটার্ন করে 
+> Example: If you host with Vercel / Netlify, replace the link above with your actual deployed URL.
 
+---
 
-4 what is arrow function?
-Answer : অ্যারো ফাংশন (ES6) এ নতুন এসেছে। এর মাধ্যমে সংক্ষেপে ফাংশন ডিক্লেয়ার করা যায়। যদি ফাংশনটি এক লাইনের হয় তাহলে আলাদা করে return লিখতে হয় না।
+## 🖼️ Screenshot
 
-5 what is tamplate literals ?
+![Project Screenshot](./screenshot.png)
 
-Answer :টেমপ্লেট লিটারাল হলো JavaScript এর একটি ফিচার, যার মাধ্যমে  সহজভাবে string লেখা যায়  এতে ${} ব্যবহার করে string এর মধ্যে variable  যুক্ত করা যায়।
+> Add a screenshot named `screenshot.png` in your project root folder for a better presentation.
+
+---
+
+## ✨ Key Features
+
+- 📋 Display issue list in a structured format
+- 🔍 Search and filter issues
+- 🏷️ Track issue status (open / closed / pending)
+- 👤 Show issue-related user information
+- 📅 Organize issue details clearly
+- ⚡ Responsive and clean interface
+- 💾 Local data handling for practice workflow
+
+---
+
+## 🛠️ Technologies Used
+
+<div align="center">
+
+<img src="https://skillicons.dev/icons?i=html,css,js,git,github,vscode" />
+
+</div>
+
+---
+
+## 📦 Dependencies
+
+This project uses:
+
+- No external framework dependencies (if built with vanilla JavaScript)
+- Optional libraries (add if you used any):
+  - Font Awesome
+  - Google Fonts
+  - Tailwind CSS (if used)
+  - Vite (if used)
+
+> Remove any item above that you did not use.
+
+---
+
+## 📂 Project Structure
+
+```bash id="yc9f6w"
+github-issue-tracker/
+│── index.html
+│── style.css
+│── script.js
+│── screenshot.png
+│── README.md
