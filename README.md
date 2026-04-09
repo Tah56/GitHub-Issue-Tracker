@@ -27,11 +27,7 @@ This project helped me practice:
 
 ---
 
-## 🖼️ Screenshot
 
-![Project Screenshot](./screenshot.png)
-
-> Add a screenshot named `screenshot.png` in your project root folder for a better presentation.
 
 ---
 
@@ -65,8 +61,7 @@ This project uses:
 - Optional libraries (add if you used any):
   - Font Awesome
   - Google Fonts
-  - Tailwind CSS (if used)
-  - Vite (if used)
+ 
 
 > Remove any item above that you did not use.
 
